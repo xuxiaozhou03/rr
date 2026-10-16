@@ -1,0 +1,29 @@
+HTTP/2 200 
+server: Tengine
+content-type: application/javascript
+content-length: 215384
+vary: Accept-Encoding
+date: Fri, 02 Oct 2026 15:12:19 GMT
+vary: Accept-Encoding
+x-oss-request-id: 6ABFC9D3A554993233BC1517
+x-oss-cdn-auth: success
+accept-ranges: bytes
+etag: "6C1F2931697D9BE7EC8627FC31EDD5AF"
+last-modified: Mon, 28 Sep 2026 06:37:38 GMT
+x-oss-object-type: Normal
+x-oss-hash-crc64ecma: 16253668965817238979
+x-oss-storage-class: Standard
+content-md5: bB8pMWl9m+fshif8Me3Vrw==
+x-oss-server-time: 23
+via: cache20.l2cn8060[0,14,200-0,H], cache18.l2cn8060[16,0], kunlun9.cn5212[45,45,200-0,M], kunlun10.cn5212[48,0]
+age: 1189580
+ali-swift-global-savetime: 1790953939
+x-cache: MISS TCP_MISS dirn:9:270682633
+x-swift-savetime: Fri, 16 Oct 2026 09:38:39 GMT
+x-swift-cachetime: 1402420
+access-control-allow-methods: GET,POST,OPTIONS
+access-control-allow-headers: X-Requested-With
+access-control-allow-origin: *
+timing-allow-origin: *
+eagleid: 7ae4df1e17921435198452543e
+
