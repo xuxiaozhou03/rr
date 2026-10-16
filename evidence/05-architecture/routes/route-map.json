@@ -1,7 +1,25 @@
 {
   "source": "evidence/02-baseline/assets/index.29842956.js",
+  "router_library": "vue-router 3.6.5",
   "router_mode": [
     "hash"
+  ],
+  "router_base": "https://static.newstartjx.com/screen/app/",
+  "route_count": 84,
+  "default_route": {
+    "path": "",
+    "name": "Home",
+    "entry_module": "bb51",
+    "chunks": [
+      "chunk-2c7cb330"
+    ]
+  },
+  "fallback_behavior": "beforeEach: 未匹配 -> /；已匹配但不在 activityHudongList(status=1) 且不属 signin/setting/barrage/ 白名单 -> /",
+  "query_observations": [
+    "预览失败回跳解析 location.search 的 preview/cid/uid 参数",
+    "回跳 frame 参数取自 window.location.hash.substring(2) 并按 ? 拆分",
+    "预览页 URL: /preview.html?frame=<route>&type=<type>",
+    "便捷页 URL: /convenient/<cid>/<uid>.html?frame=<route>"
   ],
   "routes": [
     {
@@ -864,6 +882,5 @@
       ],
       "entry_module": "e7c5"
     }
-  ],
-  "route_count": 84
+  ]
 }

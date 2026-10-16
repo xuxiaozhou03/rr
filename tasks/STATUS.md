@@ -1,10 +1,10 @@
 # REA 任务状态
 
 - 任务总数：30
-- 已完成：4
-- 部分完成：2
-- 阻塞：2
-- 待执行：22
+- 已完成：6
+- 部分完成：0
+- 阻塞：4
+- 待执行：20
 
 > `tasks/status.json` 是机器可读状态，本文件是人读视图。每次任务收尾只更新对应项。
 
@@ -24,13 +24,13 @@
 | P2-02 记录核心交互流程 | todo | - | - |
 | P2-03 建立状态流转模型 | todo | - | - |
 | P2-04 分析 URL/hash 与页面状态 | todo | - | - |
-| P3-01 识别渲染器与 3D 引擎 | partial | `evidence/04-3d/engine/runtime-probe.json`<br>`evidence/04-3d/engine/fingerprint-counts.json`<br>`evidence/04-3d/engine/runtime-3d.png` | 已完成运行时 WebGL/引擎指纹探测与截图，但还需整理为 renderer-probe.md 和 engine-fingerprint.md 验收产物。<br>**阻塞：** 缺整理与置信度标注；原始 JSON 体量较大，不应整份注入聊天。 |
-| P3-02 建立 3D 资产清单 | todo | - | - |
+| P3-01 识别渲染器与 3D 引擎 | done | `evidence/04-3d/engine/renderer-probe.md`<br>`evidence/04-3d/engine/engine-fingerprint.md`<br>`evidence/04-3d/engine/runtime-probe.json`<br>`evidence/04-3d/engine/fingerprint-counts.json` | 已确认 `#/3d` 使用 Three.js r107 的 CSS3D/DOM 路径和自研控制器；业务 chunk 未见 WebGLRenderer 实例化。隐藏 preload canvas 的 GL 信息不能代表可见 3D。 |
+| P3-02 建立 3D 资产清单 | blocked | `evidence/04-3d/assets/asset-manifest.csv`<br>`evidence/04-3d/assets/asset-loading-order.md` | 已整理 3D chunk、Logo、头像、fill image、Canvas 纹理；5 个 3D chunk 未见模型/HDR/KTX2/DRACO/Meshopt/WASM。<br>**阻塞：** 缺 HAR/Network 的传输大小与缓存头。 |
 | P3-03 还原场景图 | todo | - | - |
 | P3-04 分析材质与着色器管线 | todo | - | - |
 | P3-05 采集 3D 性能基线 | todo | - | - |
-| P4-01 识别框架与构建链路 | partial | `evidence/05-architecture/framework/webpack-index-extract.json`<br>`evidence/02-baseline/assets/index.29842956.js`<br>`evidence/02-baseline/assets/chunk-vendors.29842956.js` | 已有 webpack 路径抽取与 vendor 包，能够判断构建链路，但还需形成 framework-fingerprint.md 和 build-artifacts.csv。<br>**阻塞：** 缺产物整理、版本线索和置信度标注。 |
-| P4-02 建立路由映射 | todo | - | - |
+| P4-01 识别框架与构建链路 | done | `evidence/05-architecture/framework/framework-fingerprint.md`<br>`evidence/05-architecture/framework/build-artifacts.csv`<br>`evidence/05-architecture/framework/webpack-index-extract.json` | 已确认 Vue 2.7.16、vue-router 3.6.5、Vuex 3.6.2、jQuery 3.7.1、core-js 3.38.0、webpack 4 JSONP runtime、构建号 `29842956`，无 sourcemap。 |
+| P4-02 建立路由映射 | blocked | `evidence/05-architecture/routes/route-map.md`<br>`evidence/05-architecture/routes/route-map.json` | 已从源码解析 84 条路由（含默认 Home），记录 hash mode、默认跳转、活动白名单与预览 query；`/3d` 有网络记录。<br>**阻塞：** 验收要求每条路由有截图或网络证据；纯源码轮次未逐路由采集。 |
 | P4-03 建立 API 契约 | todo | - | - |
 | P4-04 建立数据流图 | todo | - | - |
 | P4-05 分析鉴权与会话边界 | todo | - | - |

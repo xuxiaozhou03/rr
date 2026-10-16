@@ -116,21 +116,25 @@
   },
   "P3-01": {
     "title": "识别渲染器与 3D 引擎",
-    "status": "partial",
+    "status": "done",
     "evidence": [
+      "evidence/04-3d/engine/renderer-probe.md",
+      "evidence/04-3d/engine/engine-fingerprint.md",
       "evidence/04-3d/engine/runtime-probe.json",
-      "evidence/04-3d/engine/fingerprint-counts.json",
-      "evidence/04-3d/engine/runtime-3d.png"
+      "evidence/04-3d/engine/fingerprint-counts.json"
     ],
-    "summary": "已完成运行时 WebGL/引擎指纹探测与截图，但还需整理为 renderer-probe.md 和 engine-fingerprint.md 验收产物。",
-    "blocker": "缺整理与置信度标注；原始 JSON 体量较大，不应整份注入聊天。"
+    "summary": "已确认 #/3d 使用 Three.js r107 的 CSS3D/DOM 路径和自研控制器；业务 chunk 未见 WebGLRenderer 实例化；隐藏 preload canvas 的 GL 信息已标注为不可代表可见 3D。",
+    "blocker": ""
   },
   "P3-02": {
     "title": "建立 3D 资产清单",
-    "status": "todo",
-    "evidence": [],
-    "summary": "",
-    "blocker": ""
+    "status": "blocked",
+    "evidence": [
+      "evidence/04-3d/assets/asset-manifest.csv",
+      "evidence/04-3d/assets/asset-loading-order.md"
+    ],
+    "summary": "已从源码与文本探针整理 3D chunk、Logo、头像、fill image、Canvas 生成纹理和未发现的模型/压缩资产；5 个 3D chunk 未见外部模型加载器。",
+    "blocker": "验收要求记录大小与缓存头；缺 HAR/Network 响应头与传输大小，纯源码无法补齐。"
   },
   "P3-03": {
     "title": "还原场景图",
@@ -155,21 +159,24 @@
   },
   "P4-01": {
     "title": "识别框架与构建链路",
-    "status": "partial",
+    "status": "done",
     "evidence": [
-      "evidence/05-architecture/framework/webpack-index-extract.json",
-      "evidence/02-baseline/assets/index.29842956.js",
-      "evidence/02-baseline/assets/chunk-vendors.29842956.js"
+      "evidence/05-architecture/framework/framework-fingerprint.md",
+      "evidence/05-architecture/framework/build-artifacts.csv",
+      "evidence/05-architecture/framework/webpack-index-extract.json"
     ],
-    "summary": "已有 webpack 路径抽取与 vendor 包，能够判断构建链路，但还需形成 framework-fingerprint.md 和 build-artifacts.csv。",
-    "blocker": "缺产物整理、版本线索和置信度标注。"
+    "summary": "已确认 Vue 2.7.16、vue-router 3.6.5、Vuex 3.6.2、jQuery 3.7.1、core-js 3.38.0、webpack 4 JSONP runtime、构建号 29842956，且未发布 sourcemap。",
+    "blocker": ""
   },
   "P4-02": {
     "title": "建立路由映射",
-    "status": "todo",
-    "evidence": [],
-    "summary": "",
-    "blocker": ""
+    "status": "blocked",
+    "evidence": [
+      "evidence/05-architecture/routes/route-map.md",
+      "evidence/05-architecture/routes/route-map.json"
+    ],
+    "summary": "已从源码解析 84 条路由（含默认 Home），记录 hash mode、默认跳转、活动白名单和预览 query；/3d 有网络记录。",
+    "blocker": "验收要求每条路由有截图或网络证据；纯源码轮次未逐路由采集。"
   },
   "P4-03": {
     "title": "建立 API 契约",
