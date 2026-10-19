@@ -138,10 +138,13 @@
   },
   "P3-03": {
     "title": "还原场景图",
-    "status": "todo",
-    "evidence": [],
-    "summary": "",
-    "blocker": ""
+    "status": "blocked",
+    "evidence": [
+      "evidence/04-3d/scene/scene-graph.md",
+      "evidence/04-3d/scene/scene-inventory.json"
+    ],
+    "summary": "已纯源码还原 #/3d 场景图：Three.js r107 Scene + CSS3D/DOM 渲染器 + PerspectiveCamera(40,aspect,1,20000) + 自研 c0ce 控制器；根层级为 Scene → logoBlock + pixelBlockListGroup（像素块 / surround 双 Group / doubleBall 双 Group / blackhole jetGroup），共整理 17 个效果的数量公式、参数与动画，默认最大固定数量为 dna 480。",
+    "blocker": "验收要求场景图与可见画面一致；本轮禁止读图，runtime-probe.json 的 appHTML 仅保留前 4000 字符，只能证明前 6 个像素块 DOM 节点，无法证明完整运行态对象数。"
   },
   "P3-04": {
     "title": "分析材质与着色器管线",

@@ -3,8 +3,8 @@
 - 任务总数：30
 - 已完成：6
 - 部分完成：0
-- 阻塞：4
-- 待执行：20
+- 阻塞：5
+- 待执行：19
 
 > `tasks/status.json` 是机器可读状态，本文件是人读视图。每次任务收尾只更新对应项。
 
@@ -26,7 +26,7 @@
 | P2-04 分析 URL/hash 与页面状态 | todo | - | - |
 | P3-01 识别渲染器与 3D 引擎 | done | `evidence/04-3d/engine/renderer-probe.md`<br>`evidence/04-3d/engine/engine-fingerprint.md`<br>`evidence/04-3d/engine/runtime-probe.json`<br>`evidence/04-3d/engine/fingerprint-counts.json` | 已确认 `#/3d` 使用 Three.js r107 的 CSS3D/DOM 路径和自研控制器；业务 chunk 未见 WebGLRenderer 实例化。隐藏 preload canvas 的 GL 信息不能代表可见 3D。 |
 | P3-02 建立 3D 资产清单 | blocked | `evidence/04-3d/assets/asset-manifest.csv`<br>`evidence/04-3d/assets/asset-loading-order.md` | 已整理 3D chunk、Logo、头像、fill image、Canvas 纹理；5 个 3D chunk 未见模型/HDR/KTX2/DRACO/Meshopt/WASM。<br>**阻塞：** 缺 HAR/Network 的传输大小与缓存头。 |
-| P3-03 还原场景图 | todo | - | - |
+| P3-03 还原场景图 | blocked | `evidence/04-3d/scene/scene-graph.md`<br>`evidence/04-3d/scene/scene-inventory.json` | 已纯源码还原 `#/3d` 场景图：Three.js r107 `Scene` + CSS3D/DOM 渲染器 + `PerspectiveCamera(40,aspect,1,20000)` + 自研 `c0ce` 控制器；根层级 `Scene → logoBlock` + `pixelBlockListGroup`（像素块 / surround 双 Group / doubleBall 双 Group / blackhole jetGroup），整理 17 个效果的数量公式、参数与动画。<br>**阻塞：** 验收要求场景图与可见画面一致；本轮禁图，`runtime-probe.json` 的 `appHTML` 仅保留前 4000 字符，只能证明前 6 个像素块 DOM 节点，无法证明完整运行态对象数。 |
 | P3-04 分析材质与着色器管线 | todo | - | - |
 | P3-05 采集 3D 性能基线 | todo | - | - |
 | P4-01 识别框架与构建链路 | done | `evidence/05-architecture/framework/framework-fingerprint.md`<br>`evidence/05-architecture/framework/build-artifacts.csv`<br>`evidence/05-architecture/framework/webpack-index-extract.json` | 已确认 Vue 2.7.16、vue-router 3.6.5、Vuex 3.6.2、jQuery 3.7.1、core-js 3.38.0、webpack 4 JSONP runtime、构建号 `29842956`，无 sourcemap。 |

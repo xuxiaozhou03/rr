@@ -1,0 +1,711 @@
+{
+  "task": "P3-03",
+  "title": "还原场景图",
+  "status": "blocked",
+  "generated_at": "2026-10-19",
+  "build": "29842956",
+  "source_only": true,
+  "images_used": false,
+  "images_explicitly_skipped": [
+    "evidence/04-3d/engine/runtime-3d.png"
+  ],
+  "scope": {
+    "route": "#/3d",
+    "files": [
+      "evidence/04-3d/scene/chunk-5df911d3.29842956.js",
+      "evidence/04-3d/scene/chunk-9aaf1298.29842956.js",
+      "evidence/04-3d/engine/chunk-2064b242.29842956.js",
+      "evidence/04-3d/engine/chunk-e31950d6.29842956.js",
+      "evidence/04-3d/scene/chunk-5df911d3.29842956.css",
+      "evidence/04-3d/scene/chunk-9aaf1298.29842956.css"
+    ],
+    "runtime_probe": "evidence/04-3d/engine/runtime-probe.json",
+    "note": "runtime_probe read as text only; its screenshot field was not read"
+  },
+  "lifecycle": {
+    "entry_module": {
+      "source": "evidence/04-3d/scene/chunk-9aaf1298.29842956.js",
+      "module": "d794",
+      "detail": "mounted appends #signin-3d-container; getConfig creates window.$signin3d=new(6011)(config,avatarShapeList) then startAnimation(); beforeDestroy calls stopAnimation()"
+    },
+    "scene_module": {
+      "source": "evidence/04-3d/scene/chunk-5df911d3.29842956.js",
+      "module": "6011",
+      "detail": "constructor: initLogoBlock -> pixelBlockListGroup=new Group; scene.add -> initImageEffectPointList -> initEffects -> initPixelBlockList -> orbitControls=new c0ce(camera,scene)"
+    },
+    "methods": {
+      "startAnimation": {
+        "source": "evidence/04-3d/scene/chunk-5df911d3.29842956.js",
+        "module": "6011",
+        "detail": "container.display=block; render(); startTranslate()"
+      },
+      "stopAnimation": {
+        "source": "evidence/04-3d/scene/chunk-5df911d3.29842956.js",
+        "module": "6011",
+        "detail": "destroy(); stopTranslate(); container.display=none"
+      },
+      "startTranslate": {
+        "source": "evidence/04-3d/scene/chunk-5df911d3.29842956.js",
+        "module": "6011",
+        "detail": "setLogo -> applyAvatarShape -> orbitControls.refresh -> tween camera and pixelBlockListGroup"
+      },
+      "resize": {
+        "source": "evidence/04-3d/scene/chunk-5df911d3.29842956.js",
+        "module": "6011",
+        "detail": "base resize then each effect calcMaxCameraZ()"
+      },
+      "updateGuest": {
+        "source": "evidence/04-3d/scene/chunk-5df911d3.29842956.js",
+        "module": "6011",
+        "detail": "fills pixel blocks using unfillIndexList"
+      },
+      "render_loop": {
+        "source": "evidence/04-3d/engine/chunk-e31950d6.29842956.js",
+        "module": "dc2d",
+        "detail": "TWEEN.update(); renderer.render(scene,camera); requestAnimationFrame"
+      },
+      "destroy": {
+        "source": "evidence/04-3d/engine/chunk-e31950d6.29842956.js",
+        "module": "dc2d",
+        "detail": "cancelAnimationFrame; TWEEN.removeAll(); clear scene; offResize"
+      }
+    }
+  },
+  "renderer": {
+    "kind": "CSS3D/DOM",
+    "module": {
+      "source": "evidence/04-3d/engine/chunk-e31950d6.29842956.js",
+      "module": "c8c5",
+      "detail": "render(scene,camera) builds DOM transform from projectionMatrix/matrixWorldInverse; WeakMap cache; perspective/orthographic branch"
+    },
+    "clear": {
+      "color": 16777215,
+      "alpha": 0
+    },
+    "domElement": "container div with inner div transform-style: preserve-3d",
+    "webgl_visible": false,
+    "webgl_note": "no WebGLRenderer instantiation found in the visible #/3d business chunks; only hidden preload-canvas present in runtime-probe"
+  },
+  "camera": {
+    "type": "PerspectiveCamera",
+    "params": {
+      "fov": 40,
+      "aspect": "innerWidth/innerHeight",
+      "near": 1,
+      "far": 20000
+    },
+    "initial_position": "(0,0,f(camera))",
+    "annual_override": "(cameraX,cameraY,f(camera)) when config.signinAnnual",
+    "source": {
+      "source": "evidence/04-3d/engine/chunk-e31950d6.29842956.js",
+      "module": "dc2d",
+      "detail": "default new PerspectiveCamera(40,innerWidth/innerHeight,1,20000); camera.position.set(0,0,f(camera))"
+    }
+  },
+  "controller": {
+    "type": "custom (not OrbitControls)",
+    "module": {
+      "source": "evidence/04-3d/engine/chunk-2064b242.29842956.js",
+      "module": "c0ce",
+      "detail": "refresh/onmousewheel/onmousedown/onmousemove/onmouseup/bindMouseEvent"
+    },
+    "wheel": "scene.position.z clamped to ±cameraZ/2",
+    "left_drag": "scene.rotation.x/y",
+    "right_drag": "scene.position.x/y scaled by cameraZ/f(camera)",
+    "bound_to": "document.body"
+  },
+  "scene_graph": {
+    "root": "THREE.Scene (dc2d)",
+    "children": [
+      {
+        "name": "logoBlock",
+        "type": "CSS3DObject (c8c5.a) wrapping div 500x500 opacity:0 flex center",
+        "child_optional": "img src=config.logo object-fit:contain",
+        "source": {
+          "source": "evidence/04-3d/scene/chunk-5df911d3.29842956.js",
+          "module": "6011",
+          "detail": "initLogoBlock"
+        }
+      },
+      {
+        "name": "pixelBlockListGroup",
+        "type": "THREE.Group",
+        "added_in": "constructor",
+        "children": [
+          {
+            "name": "pixelBlock[]",
+            "type": "c565 CSS3DObject wrapping div.signin-3d-element",
+            "default_style": "display:block;opacity:.95;background:blankColor",
+            "source": {
+              "source": "evidence/04-3d/engine/chunk-2064b242.29842956.js",
+              "module": "c565",
+              "detail": "createObject3D(... 'block','signin-3d-element')"
+            }
+          },
+          {
+            "name": "surround.rightGroup + surround.leftGroup",
+            "type": "THREE.Group",
+            "added_in": "19cb constructor scene.add",
+            "lazy": false
+          },
+          {
+            "name": "doubleBall.outerGroup + doubleBall.innerGroup",
+            "type": "THREE.Group",
+            "added_lazy": "ensureLayerGroups -> pixelBlockListGroup.add",
+            "lazy": true
+          },
+          {
+            "name": "blackhole.jetGroup",
+            "type": "THREE.Group",
+            "added_lazy": "ensureJetGroup -> pixelBlockListGroup.add",
+            "lazy": true
+          }
+        ]
+      }
+    ],
+    "object3dList_note": "each effect's 324f.object3dList is a pure THREE.Object3D target array; NOT added to the scene"
+  },
+  "pixel_blocks": {
+    "count_rule": {
+      "source": "evidence/04-3d/scene/chunk-5df911d3.29842956.js",
+      "module": "6011",
+      "detail": "initPixelBlockList: amount=max(effect.object3dList.length)"
+    },
+    "default_effect_order": [
+      "ball",
+      "dna",
+      "geometry",
+      "cube",
+      "surround",
+      "screw",
+      "doubleBall",
+      "torus",
+      "octahedron",
+      "hourglass",
+      "stadium",
+      "blackhole",
+      "heart",
+      "tetrahedron"
+    ],
+    "geometry_expands_to": [
+      "0cd2/table",
+      "1f86/helix",
+      "a66c/grid"
+    ],
+    "circle_default_types": [
+      "ball",
+      "surround",
+      "dna",
+      "doubleBall"
+    ],
+    "runtime_added_type": "image (63af)",
+    "default_max_fixed": 480,
+    "viewport_dependent": "geometry/table count = ceil(H/100)*ceil(W/100); may exceed 480 on very large viewports",
+    "runtime_total": "not provable from source alone (depends on signin3dEffectList and viewport)"
+  },
+  "effects": [
+    {
+      "id": "ball",
+      "type": "ball",
+      "module": "de04",
+      "chunk": "evidence/04-3d/engine/chunk-2064b242.29842956.js",
+      "count": {
+        "kind": "fixed",
+        "value": 400
+      },
+      "count_evidence": "de04: var l=400; initObject3dList loops o<l",
+      "params": {
+        "radius": 900,
+        "anim": "30s ±4π rotation, fall after 25s"
+      },
+      "group": null,
+      "shape": "circle",
+      "evidence": [
+        {
+          "source": "evidence/04-3d/engine/chunk-2064b242.29842956.js",
+          "module": "de04",
+          "detail": "var l=400; initObject3dList for o<l; radius 900"
+        }
+      ]
+    },
+    {
+      "id": "dna",
+      "type": "dna",
+      "module": "0363",
+      "chunk": "evidence/04-3d/engine/chunk-2064b242.29842956.js",
+      "count": {
+        "kind": "fixed",
+        "value": 480
+      },
+      "count_evidence": "0363: var l=480; initObject3dList loops i<l",
+      "params": {
+        "perLayer": 12,
+        "anim": "40s 6π, camera tilt"
+      },
+      "group": null,
+      "shape": "circle",
+      "evidence": [
+        {
+          "source": "evidence/04-3d/engine/chunk-2064b242.29842956.js",
+          "module": "0363",
+          "detail": "var l=480; perLayer f=12; 40s 6π"
+        }
+      ]
+    },
+    {
+      "id": "geometry/table",
+      "type": "geometry",
+      "module": "0cd2",
+      "chunk": "evidence/04-3d/engine/chunk-2064b242.29842956.js",
+      "count": {
+        "kind": "formula",
+        "expr": "ceil(innerHeight/100)*ceil(innerWidth/100)",
+        "viewport_dependent": true
+      },
+      "count_evidence": "0cd2: e=ceil(innerHeight/100), n=ceil(innerWidth/100), o=e*n",
+      "params": {
+        "grid": 200,
+        "anim": "2s transform + 3s"
+      },
+      "group": null,
+      "shape": "square",
+      "evidence": [
+        {
+          "source": "evidence/04-3d/engine/chunk-2064b242.29842956.js",
+          "module": "0cd2",
+          "detail": "e=ceil(innerHeight/100); n=ceil(innerWidth/100); o=e*n"
+        }
+      ]
+    },
+    {
+      "id": "geometry/helix",
+      "type": "geometry",
+      "module": "1f86",
+      "chunk": "evidence/04-3d/engine/chunk-2064b242.29842956.js",
+      "count": {
+        "kind": "fixed",
+        "value": 400,
+        "expr": "40*10"
+      },
+      "count_evidence": "1f86: var h=40,l=10; loops c<l, v<h => 400",
+      "params": {
+        "helixRows": 40,
+        "helixCols": 10,
+        "radiusApprox": 1273,
+        "anim": "30s 4π"
+      },
+      "group": null,
+      "shape": "square",
+      "evidence": [
+        {
+          "source": "evidence/04-3d/engine/chunk-2064b242.29842956.js",
+          "module": "1f86",
+          "detail": "h=40; l=10; f=160; initObject3dList loops c<l, v<h"
+        }
+      ]
+    },
+    {
+      "id": "geometry/grid",
+      "type": "geometry",
+      "module": "a66c",
+      "chunk": "evidence/04-3d/engine/chunk-2064b242.29842956.js",
+      "count": {
+        "kind": "fixed",
+        "value": 400
+      },
+      "count_evidence": "a66c: var l=400; initObject3dList loops e<l",
+      "params": {
+        "grid": "5x5x16",
+        "anim": "zoom or 30s 4π"
+      },
+      "group": null,
+      "shape": "square",
+      "evidence": [
+        {
+          "source": "evidence/04-3d/engine/chunk-2064b242.29842956.js",
+          "module": "a66c",
+          "detail": "var l=400; initObject3dList for e<l"
+        }
+      ]
+    },
+    {
+      "id": "cube",
+      "type": "cube",
+      "module": "3f6b",
+      "chunk": "evidence/04-3d/engine/chunk-2064b242.29842956.js",
+      "count": {
+        "kind": "fixed",
+        "value": 384,
+        "expr": "6*8^2"
+      },
+      "count_evidence": "3f6b: var h=150,l=8; loops n<6, o<pow(l,2)",
+      "params": {
+        "faces": 6,
+        "side": 8,
+        "spacing": 150,
+        "anim": "~22s rotation"
+      },
+      "group": null,
+      "shape": "square",
+      "evidence": [
+        {
+          "source": "evidence/04-3d/engine/chunk-2064b242.29842956.js",
+          "module": "3f6b",
+          "detail": "h=150; l=8; loops n<6, o<Math.pow(l,2)"
+        }
+      ]
+    },
+    {
+      "id": "surround",
+      "type": "surround",
+      "module": "19cb",
+      "chunk": "evidence/04-3d/engine/chunk-2064b242.29842956.js",
+      "count": {
+        "kind": "fixed",
+        "value": 200,
+        "expr": "20*10"
+      },
+      "count_evidence": "19cb: var f=20,d=10,p=f*d; loops e<p",
+      "params": {
+        "ring": 20,
+        "layers": 10,
+        "radius": 800,
+        "zStep": 600,
+        "anim": "15s screw + 1.5s burst"
+      },
+      "group": "rightGroup + leftGroup (THREE.Group, scene.add in constructor)",
+      "shape": "circle",
+      "evidence": [
+        {
+          "source": "evidence/04-3d/engine/chunk-2064b242.29842956.js",
+          "module": "19cb",
+          "detail": "f=20; d=10; p=f*d; rightGroup/leftGroup = new Group; scene.add both"
+        }
+      ]
+    },
+    {
+      "id": "screw",
+      "type": "screw",
+      "module": "9142",
+      "chunk": "evidence/04-3d/engine/chunk-2064b242.29842956.js",
+      "count": {
+        "kind": "fixed",
+        "value": 150,
+        "expr": "6*25"
+      },
+      "count_evidence": "9142: var h=6,l=25,f=h*l; loops e<f",
+      "params": {
+        "turns": 6,
+        "segments": 25,
+        "spacing": 30,
+        "radius": 800,
+        "anim": "scale 0.8->1.5->1"
+      },
+      "group": null,
+      "shape": "square",
+      "evidence": [
+        {
+          "source": "evidence/04-3d/engine/chunk-2064b242.29842956.js",
+          "module": "9142",
+          "detail": "h=6; l=25; f=h*l; d=30; v=800"
+        }
+      ]
+    },
+    {
+      "id": "doubleBall",
+      "type": "doubleBall",
+      "module": "ce9c8",
+      "chunk": "evidence/04-3d/scene/chunk-5df911d3.29842956.js",
+      "count": {
+        "kind": "fixed",
+        "value": 288,
+        "expr": "200+88"
+      },
+      "count_evidence": "ce9c8: var h=200,f=88; initObject3dList concat createSpherePoints(h,p)+createSpherePoints(f,d)",
+      "params": {
+        "outerCount": 200,
+        "innerCount": 88,
+        "outerRadius": 880,
+        "innerRadius": 480,
+        "anim": "counter-rotation"
+      },
+      "group": "outerGroup + innerGroup (THREE.Group, lazy in ensureLayerGroups, added to pixelBlockListGroup)",
+      "shape": "circle",
+      "evidence": [
+        {
+          "source": "evidence/04-3d/scene/chunk-5df911d3.29842956.js",
+          "module": "ce9c8",
+          "detail": "h=200; f=88; p=880; d=480; ensureLayerGroups adds outerGroup/innerGroup to pixelBlockListGroup"
+        }
+      ]
+    },
+    {
+      "id": "torus",
+      "type": "torus",
+      "module": "ff39",
+      "chunk": "evidence/04-3d/scene/chunk-5df911d3.29842956.js",
+      "count": {
+        "kind": "fixed",
+        "value": 192,
+        "expr": "16*12"
+      },
+      "count_evidence": "ff39: var h=16,f=12; initObject3dList loops e<h, n<f",
+      "params": {
+        "mainRadius": 1170,
+        "tubeRadius": 330
+      },
+      "group": null,
+      "shape": "square",
+      "evidence": [
+        {
+          "source": "evidence/04-3d/scene/chunk-5df911d3.29842956.js",
+          "module": "ff39",
+          "detail": "h=16; f=12; p=1.5; d=780*p"
+        }
+      ]
+    },
+    {
+      "id": "octahedron",
+      "type": "octahedron",
+      "module": "5c3e",
+      "chunk": "evidence/04-3d/scene/chunk-5df911d3.29842956.js",
+      "count": {
+        "kind": "fixed",
+        "value": 192,
+        "expr": "8*24"
+      },
+      "count_evidence": "5c3e: var h=8,f=24; loops o<h, c<f",
+      "params": {
+        "faces": 8,
+        "perFace": 24,
+        "vertices": "±1440/±1290"
+      },
+      "group": null,
+      "shape": "square",
+      "evidence": [
+        {
+          "source": "evidence/04-3d/scene/chunk-5df911d3.29842956.js",
+          "module": "5c3e",
+          "detail": "h=8; f=24; loops o<h, c<f"
+        }
+      ]
+    },
+    {
+      "id": "hourglass",
+      "type": "hourglass",
+      "module": "55b9",
+      "chunk": "evidence/04-3d/scene/chunk-5df911d3.29842956.js",
+      "count": {
+        "kind": "fixed",
+        "value": 180
+      },
+      "count_evidence": "55b9: var l=180; loops e<l",
+      "params": {
+        "y": "±1200",
+        "radius": "420 + abs(n)*720"
+      },
+      "group": null,
+      "shape": "square",
+      "evidence": [
+        {
+          "source": "evidence/04-3d/scene/chunk-5df911d3.29842956.js",
+          "module": "55b9",
+          "detail": "l=180; f=800*h; p=280*h; d=480*h"
+        }
+      ]
+    },
+    {
+      "id": "stadium",
+      "type": "stadium",
+      "module": "8b82",
+      "chunk": "evidence/04-3d/scene/chunk-5df911d3.29842956.js",
+      "count": {
+        "kind": "fixed",
+        "value": 180,
+        "expr": "6*30"
+      },
+      "count_evidence": "8b82: var h=6,f=30,p=h*f; loops e<p",
+      "params": {
+        "rows": 6,
+        "cols": 30,
+        "layerRadiusApprox": 930
+      },
+      "group": null,
+      "shape": "square",
+      "evidence": [
+        {
+          "source": "evidence/04-3d/scene/chunk-5df911d3.29842956.js",
+          "module": "8b82",
+          "detail": "h=6; f=30; p=h*f; w=620"
+        }
+      ]
+    },
+    {
+      "id": "blackhole",
+      "type": "blackhole",
+      "module": "beec",
+      "chunk": "evidence/04-3d/scene/chunk-5df911d3.29842956.js",
+      "count": {
+        "kind": "fixed",
+        "value": 160,
+        "expr": "100+60"
+      },
+      "count_evidence": "beec: var l=100,h=60,f=l+h; loops e<f",
+      "params": {
+        "disk": 100,
+        "jet": 60,
+        "radius": "630 + i^0.7*1125"
+      },
+      "group": "jetGroup (THREE.Group, lazy in ensureJetGroup, added to pixelBlockListGroup)",
+      "shape": "square",
+      "evidence": [
+        {
+          "source": "evidence/04-3d/scene/chunk-5df911d3.29842956.js",
+          "module": "beec",
+          "detail": "l=100; h=60; f=l+h; ensureJetGroup adds jetGroup to pixelBlockListGroup"
+        }
+      ]
+    },
+    {
+      "id": "heart",
+      "type": "heart",
+      "module": "ac24",
+      "chunk": "evidence/04-3d/scene/chunk-5df911d3.29842956.js",
+      "count": {
+        "kind": "fixed",
+        "value": 160,
+        "expr": "5*32"
+      },
+      "count_evidence": "ac24: var h=5,f=32,p=h*f; loops e<p",
+      "params": {
+        "layers": 5,
+        "perLayer": 32,
+        "heartScale": 60
+      },
+      "group": null,
+      "shape": "square",
+      "evidence": [
+        {
+          "source": "evidence/04-3d/scene/chunk-5df911d3.29842956.js",
+          "module": "ac24",
+          "detail": "h=5; f=32; p=h*f; d=40*l"
+        }
+      ]
+    },
+    {
+      "id": "tetrahedron",
+      "type": "tetrahedron",
+      "module": "6237",
+      "chunk": "evidence/04-3d/scene/chunk-5df911d3.29842956.js",
+      "count": {
+        "kind": "fixed",
+        "value": 312,
+        "expr": "4*78"
+      },
+      "count_evidence": "6237: var h=4,f=14; loops o<h and d<buildFacePoints().length; face points count = (f-1)(f-2)/2 = 78",
+      "params": {
+        "faces": 4,
+        "perFace": 78,
+        "anim": "~22s dual-axis rotation"
+      },
+      "group": null,
+      "shape": "square",
+      "evidence": [
+        {
+          "source": "evidence/04-3d/scene/chunk-5df911d3.29842956.js",
+          "module": "6237",
+          "detail": "h=4; f=14; buildFacePoints loops o<=f-2, a<=f-o-1"
+        }
+      ]
+    },
+    {
+      "id": "image",
+      "type": "image",
+      "module": "63af",
+      "chunk": "evidence/04-3d/engine/chunk-2064b242.29842956.js",
+      "count": {
+        "kind": "formula",
+        "expr": "config.graph.pointList.length",
+        "runtime_added": true
+      },
+      "count_evidence": "63af: initObject3dList(t) loops o<t.pointList.length",
+      "params": {
+        "grid": 16,
+        "supports": "s/p",
+        "anim": "5s 2π then burst"
+      },
+      "group": null,
+      "shape": "square",
+      "evidence": [
+        {
+          "source": "evidence/04-3d/engine/chunk-2064b242.29842956.js",
+          "module": "63af",
+          "detail": "f=16; initObject3dList loops o<t.pointList.length"
+        }
+      ]
+    }
+  ],
+  "absent_features": {
+    "lights": {
+      "present": false,
+      "evidence": "no Light usage in inspected business chunks"
+    },
+    "fog": {
+      "present": false,
+      "evidence": "no Fog usage in inspected business chunks"
+    },
+    "lod": {
+      "present": false,
+      "evidence": "no LOD usage; calcMaxCameraZ is distance math only"
+    },
+    "post_processing": {
+      "present": false,
+      "evidence": "no EffectComposer/RenderPass in inspected business chunks"
+    },
+    "custom_shader": {
+      "present": false,
+      "evidence": "P3-04 scope; no ShaderMaterial/RawShaderMaterial in inspected business chunks"
+    },
+    "external_model_loader": {
+      "present": false,
+      "evidence": "GLTF/FBX/OBJ/DRACO/KTX2/Meshopt markers count 0"
+    }
+  },
+  "runtime_text_evidence": {
+    "globals": {
+      "$signin3d": "object",
+      "THREE": "undefined",
+      "Vue": "undefined",
+      "webpackJsonp": "object"
+    },
+    "canvases": [
+      {
+        "id": "preload-canvas",
+        "display": "none",
+        "visible": false,
+        "width": 300,
+        "height": 150,
+        "clientWidth": 0,
+        "clientHeight": 0
+      }
+    ],
+    "app_html": {
+      "truncated": true,
+      "length": 4000,
+      "signin_3d_element_hits": 6,
+      "note": "only the first 4000 chars are retained; proves at most the first 6 pixel-block DOM nodes"
+    }
+  },
+  "acceptance": {
+    "every_node_has_source": true,
+    "no_business_code_rebuild": true,
+    "scene_matches_visible_frame": false
+  },
+  "blocker": "验证项要求场景图与可见画面一致；本轮禁止读图，且 runtime-probe.json 的 appHTML 仅保留前 4000 字符，只能证明前 6 个像素块 DOM 节点，无法证明完整运行态对象数。",
+  "limitations": [
+    "No screenshots/images/base64/data URLs were read in this task.",
+    "effectShapeList may be overridden by config.signin3dEffectList, so runtime effect set is not fully provable.",
+    "runtime-probe.json appHTML is truncated to 4000 chars.",
+    "Effect counts are source-derived; runtime object counts were not enumerated."
+  ]
+}
